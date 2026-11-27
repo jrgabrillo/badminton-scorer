@@ -78,7 +78,12 @@ export function FlipScoreCard({
             borderBottom: '1px solid rgba(0, 0, 0, 0.35)',
           }}
         >
-          <div className="flap-digit font-black text-white">{staticTopValue}</div>
+          <div
+            className="flap-digit font-normal text-white"
+            data-digits={String(staticTopValue).length}
+          >
+            <span className="flap-digit-glyph">{staticTopValue}</span>
+          </div>
         </div>
 
         {/* Static Bottom Half */}
@@ -89,7 +94,12 @@ export function FlipScoreCard({
             borderTop: '1px solid rgba(255, 255, 255, 0.12)',
           }}
         >
-          <div className="flap-digit font-black text-white">{staticBottomValue}</div>
+          <div
+            className="flap-digit font-normal text-white"
+            data-digits={String(staticBottomValue).length}
+          >
+            <span className="flap-digit-glyph">{staticBottomValue}</span>
+          </div>
         </div>
 
         {/* Animated Page-Flip Leaves */}
@@ -102,8 +112,11 @@ export function FlipScoreCard({
                 borderTop: '1px solid rgba(255, 255, 255, 0.12)',
               }}
             >
-              <div className="flap-digit font-black text-white">
-                {activeTransition.from}
+              <div
+                className="flap-digit font-normal text-white"
+                data-digits={String(activeTransition.from).length}
+              >
+                <span className="flap-digit-glyph">{activeTransition.from}</span>
               </div>
             </div>
             <div
@@ -113,8 +126,11 @@ export function FlipScoreCard({
                 borderBottom: '1px solid rgba(0, 0, 0, 0.35)',
               }}
             >
-              <div className="flap-digit font-black text-white">
-                {activeTransition.to}
+              <div
+                className="flap-digit font-normal text-white"
+                data-digits={String(activeTransition.to).length}
+              >
+                <span className="flap-digit-glyph">{activeTransition.to}</span>
               </div>
             </div>
           </div>
@@ -129,8 +145,11 @@ export function FlipScoreCard({
                 borderBottom: '1px solid rgba(0, 0, 0, 0.35)',
               }}
             >
-              <div className="flap-digit font-black text-white">
-                {activeTransition.from}
+              <div
+                className="flap-digit font-normal text-white"
+                data-digits={String(activeTransition.from).length}
+              >
+                <span className="flap-digit-glyph">{activeTransition.from}</span>
               </div>
             </div>
             <div
@@ -140,8 +159,11 @@ export function FlipScoreCard({
                 borderTop: '1px solid rgba(255, 255, 255, 0.12)',
               }}
             >
-              <div className="flap-digit font-black text-white">
-                {activeTransition.to}
+              <div
+                className="flap-digit font-normal text-white"
+                data-digits={String(activeTransition.to).length}
+              >
+                <span className="flap-digit-glyph">{activeTransition.to}</span>
               </div>
             </div>
           </div>

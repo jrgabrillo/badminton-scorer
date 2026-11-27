@@ -25,14 +25,14 @@
 .flip-card-dimensions {
   width: 82vmin;
   height: 78vmin;
-  font-size: 56vmin;
+  font-size: 62vmin;
 }
 
 @supports (width: 1cqw) {
   .flip-card-dimensions {
     width: 84cqw;
     height: 78cqh;
-    font-size: min(62cqw, 66cqh);
+    font-size: min(74cqw, 70cqh);
   }
 
   /* Smartphones (portrait auto-rotated or native landscape): ~90% fill for court-side legibility */
@@ -40,11 +40,7 @@
     .flip-card-dimensions {
       width: 92cqw;
       height: 88cqh;
-      font-size: min(76cqw, 84cqh);
-    }
-
-    .flap-digit {
-      letter-spacing: -0.04em;
+      font-size: min(82cqw, 78cqh);
     }
   }
 }
@@ -100,9 +96,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
   font-variant-numeric: tabular-nums;
   line-height: 1;
+  text-align: center;
+  white-space: nowrap;
   user-select: none;
+}
+
+.flap-digit[data-digits='3'] {
+  font-size: 0.72em;
+}
+
+.flap-digit-glyph {
+  display: inline-block;
+  transform: scaleX(0.86) scaleY(1.12);
+  transform-origin: center center;
 }
 
 .flap-top .flap-digit {
