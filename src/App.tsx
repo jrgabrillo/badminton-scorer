@@ -4,13 +4,19 @@ import { ScorePanel } from './components/ScorePanel';
 import { usePortraitRotation } from './hooks/usePortraitRotation';
 import type { DeltaBadge, FlipTransition, TeamId } from './types/score';
 
+const MIN_SCORE = 0;
+const MAX_SCORE = 999;
 const DELTA_LIFETIME_MS = 680;
 const SHAKE_DURATION_MS = 300;
 
-export function App() {
+interface AppProps {
+  initialScores?: Record<TeamId, number>;
+}
+
+export function App({ initialScores = { red: 0, blue: 0 } }: AppProps) {
   const isPortraitPhone = usePortraitRotation();
 
-  const [scores, setScores] = useState<Record<TeamId, number>>({ red: 0, blue: 0 });
+  const [scores, setScores] = useState<Record<TeamId, number>>(initialScores);
   const [swapped, setSwapped] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [transitions, setTransitions] = useState<Record<TeamId, FlipTransition | null>>({
@@ -35,7 +41,7 @@ export function App() {
     const current = scoresRef.current[team];
     const next = current + delta;
 
-    if (next < 0) {
+    if (next < MIN_SCORE || next > MAX_SCORE) {
       setShaking((prev) => ({ ...prev, [team]: true }));
       window.setTimeout(() => {
         setShaking((prev) => ({ ...prev, [team]: false }));

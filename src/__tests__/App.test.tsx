@@ -111,4 +111,21 @@ describe('Badminton Scorer', () => {
     expect(screen.getByTestId('score-value-red')).toHaveTextContent('0');
     expect(screen.getByTestId('score-value-blue')).toHaveTextContent('0');
   });
+
+  it('supports 3-digit scores up to 999 and does not exceed 999', () => {
+    mockMatchMedia(false);
+    render(<App initialScores={{ red: 998, blue: 100 }} />);
+
+    const redPanel = screen.getByTestId('score-panel-red');
+    expect(screen.getByTestId('score-value-red')).toHaveTextContent('998');
+    expect(redPanel.querySelector('[data-digits="3"]')).toBeInTheDocument();
+
+    // 998 -> 999
+    swipe(redPanel, { x: 100, y: 200 }, { x: 100, y: 120 });
+    expect(screen.getByTestId('score-value-red')).toHaveTextContent('999');
+
+    // Stays clamped at 999
+    swipe(redPanel, { x: 100, y: 200 }, { x: 100, y: 120 });
+    expect(screen.getByTestId('score-value-red')).toHaveTextContent('999');
+  });
 });

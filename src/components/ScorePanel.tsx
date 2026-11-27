@@ -17,11 +17,11 @@ interface ScorePanelProps {
 
 const PANEL_STYLES: Record<TeamId, { label: string; gradient: string }> = {
   red: {
-    label: 'RED',
+    label: 'Home',
     gradient: 'linear-gradient(155deg, #dc2626 0%, #991b1b 100%)',
   },
   blue: {
-    label: 'BLUE',
+    label: 'Guest',
     gradient: 'linear-gradient(155deg, #2563eb 0%, #1e3a8a 100%)',
   },
 };
